@@ -1,0 +1,25 @@
+---
+  - name: Make sure GPO directory exists
+    ansible.windows.win_file:
+      path: c:\GPO
+      state: directory
+
+  - name: Copy GPO container
+    ansible.builtin.copy:
+      src: files/GPO_Training.zip
+      dest: c:\GPO\GPO_Training.zip
+
+  - name: Copy Script
+    ansible.builtin.copy:
+      src: files/gpo-import.ps1
+      dest: c:\GPO\gpo-import.ps1
+
+  - name: Unzip GPO container
+    community.windows.win_unzip:
+      src: c:\GPO\GPO_Training.zip
+      dest: c:\GPO\GPO\
+
+  - name: Import GPO
+    script: files/gpo-import.ps1
+    args:
+      creates: C:\Logs\gpo-import.txt
