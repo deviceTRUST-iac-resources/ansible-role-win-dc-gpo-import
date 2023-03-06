@@ -1,4 +1,4 @@
-﻿$TargetPath = "c:\GPO\GPO_Export"
+﻿$TargetPath = "c:\GPO"
 mkdir $TargetPath
 
 Get-GPO -all | ForEach-Object{
