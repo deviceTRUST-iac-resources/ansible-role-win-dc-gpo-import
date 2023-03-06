@@ -6,8 +6,8 @@
 
   - name: Copy GPO container
     ansible.builtin.copy:
-      src: files/GPO_Training.zip
-      dest: c:\GPO\GPO_Training.zip
+      src: files/GPO_Export.zip
+      dest: c:\GPO\GPO_Export.zip
 
   - name: Copy Script
     ansible.builtin.copy:
@@ -16,7 +16,7 @@
 
   - name: Unzip GPO container
     community.windows.win_unzip:
-      src: c:\GPO\GPO_Training.zip
+      src: c:\GPO\GPO_Export.zip
       dest: c:\GPO\GPO\
 
   - name: Import GPO
