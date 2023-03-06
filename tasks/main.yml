@@ -1,4 +1,9 @@
 ---
+  - name: Delete GPO directory if exists
+    ansible.windows.win_file:
+      path: c:\GPO
+      state: absent
+
   - name: Make sure GPO directory exists
     ansible.windows.win_file:
       path: c:\GPO
